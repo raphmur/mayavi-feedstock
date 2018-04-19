@@ -1,4 +1,4 @@
-{% set version = "4.5.0" %}
+{% set version = "4.5.1" %}
 
 package:
   name: mayavi
@@ -6,15 +6,15 @@ package:
 
 source:
   fn: mayavi-{{ version }}.tar.gz
-  url: https://github.com/enthought/mayavi/archive/{{ version }}.tar.gz
-  sha256: 36f688b3ea542e9f8cc0d7faa25e1425723cd00acc8aa640169029f33679ab85
+  url: https://github.com/raphmur/mayavi/archive/{{ version }}.tar.gz
+  sha256: 47078d9203139960710c4b03ebf3f2a43fe72ad944dbb1c5df1bf70e8ef48f5e
 
 build:
   number: 3
   features:
     - vc9  # [win and py27]
-    - vc14  # [win and py35]
-    - vc14  # [win and py36]
+    - vc15  # [win and py35]
+    - vc15  # [win and py36]
   entry_points:
     - mayavi2 = mayavi.scripts.mayavi2:main
     - tvtk_doc = tvtk.tools.tvtk_doc:main
@@ -24,23 +24,20 @@ requirements:
   build:
     - toolchain
     - python
-    - numpy 1.8.*   # [not (win and (py35 or py36))]
-    - numpy 1.9.*   # [win and py35]
-    - numpy 1.11.*  # [win and py36]
+    - numpy 1.14.*
     - setuptools
-    - vtk 7.1.*
-    - traitsui
+    - vtk 8.*
+    - traitsui >=6.0.0
     - apptools
   run:
     - python
-    - numpy >=1.8   # [not (win and (py35 or py36))]
-    - numpy >=1.9   # [win and py35]
-    - numpy >=1.11  # [win and py36]
-    - vtk 7.1.*
-    - traitsui
+    - jsoncpp 0.10.*
+    - numpy >=1.14.*
+    - vtk 8.*
+    - traitsui >=6.0.0
     - apptools
     - envisage
-    - pyqt 4.*
+    - pyqt
     - setuptools
 
 test:
